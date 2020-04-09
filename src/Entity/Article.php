@@ -14,7 +14,6 @@ use Doctrine\ORM\Mapping as ORM;
  *   normalizationContext={"groups"={"user_read"}}
  * )
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "title": "ipartial"})
- * @ApiFilter(BooleanFilter::class, properties={"trending"})
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
  */
 class Article extends AbstractEntity
@@ -48,6 +47,7 @@ class Article extends AbstractEntity
     /**
      * @ORM\Column(type="boolean", nullable=true)
      * @Groups("user_read")
+     * @ApiFilter(BooleanFilter::class)
      */
     private $trending;
 
