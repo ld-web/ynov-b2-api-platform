@@ -8,3 +8,7 @@ api_platform:
   collection:
     pagination:
         client_enabled: true
+  formats:
+    jsonld:   ['application/ld+json']
+    json:     ['application/json']
+    csv:      ['text/csv']
