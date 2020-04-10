@@ -6,6 +6,7 @@ use App\Entity\Article;
 use App\Entity\ArticleStatus;
 use App\Entity\Category;
 use App\Entity\User;
+use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
@@ -46,7 +47,8 @@ class AppFixtures extends Fixture
 
     $user = new User();
     $user->setEmail('test@test.com')
-      ->setPassword($this->encoder->encodePassword($user, '1234'));
+      ->setPassword($this->encoder->encodePassword($user, '1234'))
+      ->setBirthDate(new DateTime('1990-05-15'));
 
     $manager->persist($user);
 

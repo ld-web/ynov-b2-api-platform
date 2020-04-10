@@ -6,9 +6,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Dto\UserOutput;
 
 /**
  * @ApiResource(
+ *   output=UserOutput::class,
  *   normalizationContext={
  *     "groups"="user_read",
  *     "datetime_format"="d/m/Y"
@@ -22,19 +24,16 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("user_read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups("user_read")
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
-     * @Groups("user_read")
      */
     private $roles = [];
 
@@ -46,9 +45,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups("user_read")
      */
     private $lastConnection;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $birthDate;
 
     public function getId(): ?int
     {
@@ -136,6 +139,18 @@ class User implements UserInterface
     public function setLastConnection(?\DateTimeInterface $lastConnection): self
     {
         $this->lastConnection = $lastConnection;
+
+        return $this;
+    }
+
+    public function getBirthDate(): ?\DateTimeInterface
+    {
+        return $this->birthDate;
+    }
+
+    public function setBirthDate(\DateTimeInterface $birthDate): self
+    {
+        $this->birthDate = $birthDate;
 
         return $this;
     }
