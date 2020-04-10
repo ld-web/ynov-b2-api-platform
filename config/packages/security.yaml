@@ -25,6 +25,10 @@ security:
         success_handler: lexik_jwt_authentication.handler.authentication_success
         failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
+    csv_users:
+      pattern: ^/api/users.csv
+      anonymous: true
+
     api:
       pattern: ^/
       stateless: true
