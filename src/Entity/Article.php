@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource(
- *   normalizationContext={"groups"={"user_read"}}
+ *   normalizationContext={"groups"={"article_read"}}
  * )
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "title": "ipartial"})
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -22,44 +22,44 @@ class Article extends AbstractEntity
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("user_read")
+     * @Groups("article_read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("user_read")
+     * @Groups("article_read")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups("user_read")
+     * @Groups("article_read")
      */
     private $content;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups("user_read")
+     * @Groups("article_read")
      */
     private $status;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
-     * @Groups("user_read")
+     * @Groups("article_read")
      * @ApiFilter(BooleanFilter::class)
      */
     private $trending;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups("user_read")
+     * @Groups("article_read")
      */
     private $published;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="articles")
-     * @Groups("user_read")
+     * @Groups("article_read")
      */
     private $category;
 

@@ -18,13 +18,13 @@ class Category extends AbstractEntity
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("user_read")
+     * @Groups("article_read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("user_read")
+     * @Groups("article_read")
      */
     private $name;
 
